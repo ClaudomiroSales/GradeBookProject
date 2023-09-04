@@ -1,16 +1,24 @@
 #include "GradeBook.h"
 
+#include <iostream>
+using std::cout;
+
 GradeBook::GradeBook( )
 {
-    courseName = 0;
+    courseName = "";
 }
 
-GradeBook::GradeBook( int name )
+GradeBook::GradeBook( string name )
 {
     courseName = name;
 }
 
-int GradeBook::getCourseName( ) const
+string GradeBook::getCourseName( ) const
 {
     return courseName;
+}
+
+void GradeBook::displayMessage( ) 
+{
+     cout << "Welcome to the Grade Book for course " << courseName << '\n';
 }

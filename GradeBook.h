@@ -1,19 +1,23 @@
 #ifndef GRADEBOOK_H
 #define GRADEBOOK_H
 
+#include <string>
+using std::string;
+
 class GradeBook
 {
 public:
 
     GradeBook ( );    
-    GradeBook( int );
+    GradeBook( string );
 
-    int getCourseName( ) const;
+    string getCourseName( ) const;
     
+    void displayMessage( );
     
 private:
 
-    int courseName;
+    string courseName;
 
 };
 
