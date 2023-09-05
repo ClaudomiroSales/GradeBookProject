@@ -9,7 +9,7 @@ class GradeBook
 public:
 
     GradeBook ( );    
-    GradeBook( string, int = 0 );
+    GradeBook( string, int = 10 );
     GradeBook( int );
     GradeBook( const GradeBook & );
 
@@ -32,9 +32,17 @@ private:
 
     bool check;
 
-    int numGradeBooks;
+    static int numGradeBooks;
+    //Error check. Static não pode instanciar no .h
+    //static int numGradeBooks = 0;
 
-    int numAlunosEscola;
+    static int numAlunosEscola;
+    //Error check. Static não pode instanciar no .h
+    //static int numAlunosEscola = 0;
+
+    const static int MAXNUMALUNOSESCOLA;
+    //Pode inicializar aqui ou no cpp
+    //const static int MAXNUMALUNOSESCOLA = 100;
 
     const int MAXSIZENAME = 7;    
 

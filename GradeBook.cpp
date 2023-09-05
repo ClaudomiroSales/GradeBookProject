@@ -3,10 +3,15 @@
 #include <iostream>
 using std::cout;
 
+//Instanciação de variáveis statics
+int GradeBook::numGradeBooks = 0;
+int GradeBook::numAlunosEscola = 0;
+const int GradeBook::MAXNUMALUNOSESCOLA = 50;
+
 GradeBook::GradeBook( )
 :courseName(""), numAlunos( 0 ), MAXSIZENAME( 9 )
 {
-    
+    numGradeBooks++;
 }
 
 GradeBook::GradeBook( string name, int numAlunos )
@@ -14,19 +19,25 @@ GradeBook::GradeBook( string name, int numAlunos )
 {
     setCourseName( name );
     setNumAlunos( numAlunos );
+
+    numGradeBooks++;
 }
 
 GradeBook::GradeBook( int numAlunos )
 :courseName(""), MAXSIZENAME( 9 )
 {
     setNumAlunos( numAlunos );
+
+    numGradeBooks++;
 }
 
 GradeBook::GradeBook( const GradeBook& other )
 :MAXSIZENAME( other.MAXSIZENAME )
 {
     this->courseName = other.courseName;
-    this->numAlunos  = other.numAlunos;
+    setNumAlunos( other.numAlunos );
+
+    numGradeBooks++;
 }
 
 void GradeBook::setCourseName( string name )
@@ -43,13 +54,36 @@ void GradeBook::setCourseName( string name )
 
 void GradeBook::setNumAlunos( int numAlunos )
 {
-    if ( numAlunos > 0 )
+    cout << "Numero de alunos na escola " << GradeBook::numAlunosEscola << '\n';
+    cout << "Vagas restantes " << MAXNUMALUNOSESCOLA - GradeBook::numAlunosEscola << '\n';
+    
+    if ( numAlunos < 0 )
     {
-        this->numAlunos = numAlunos;
+        this->numAlunos = 0;
+        return;
+    }
+
+    //A escola já está no limite máximo de alunos
+    if( GradeBook::numAlunosEscola == MAXNUMALUNOSESCOLA )
+    {
+        this->numAlunos = 0;
+        cout << "Nao ha mais vagas.\n\n";
         return;
     }
     
-    this->numAlunos = 0;       
+    //Tem mais vagas que o necessário
+    if ( ( numAlunos + GradeBook::numAlunosEscola ) <= MAXNUMALUNOSESCOLA )
+    {
+        this->numAlunos = numAlunos;
+        GradeBook::numAlunosEscola += this->numAlunos;  
+        cout << "Novos alunos que conseguiram a matricula em " << this->courseName << ": " << this->numAlunos << "\n\n";
+        return;          
+    }        
+
+    //Apenas parte dos alunos serão cadastrados para não ultrassar o número máximo
+    this->numAlunos =  MAXNUMALUNOSESCOLA - GradeBook::numAlunosEscola;
+    GradeBook::numAlunosEscola += this->numAlunos; 
+    cout << "Apenas " << this->numAlunos << " conseguiram a matricula em " << this->courseName << ".\n\n";
 }
 
 string GradeBook::getCourseName( ) const

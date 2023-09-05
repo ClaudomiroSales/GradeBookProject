@@ -10,7 +10,7 @@ int main()
    GradeBook gradebook0;
    GradeBook gradebook1( "Math" );
    const GradeBook GRADEBOOK2( "Physicssfdsfdsfgsgsdfgfgsdfgsdfgsdfdsfgsdfgfsadgf", 30 );
-   GradeBook gradebook3( "Geography", 10 );
+   GradeBook gradebook3( "Geography", 60 );
    GradeBook gradebook4( 20 );
    GradeBook gradebook5( GRADEBOOK2 ); //Constructor de cópia
 
