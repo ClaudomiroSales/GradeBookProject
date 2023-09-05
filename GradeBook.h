@@ -18,6 +18,8 @@ public:
     void setNumAlunos( int );
 
     string getCourseName( ) const;
+    inline int getnumGradeBooks( ) { return numGradeBooks; }
+    inline int getnumAlunosEscola( ) { return numAlunosEscola; }
     
     void displayMessage( bool = true ) const;
     void displayMessage( bool = true );
@@ -29,6 +31,10 @@ private:
     int numAlunos;
 
     bool check;
+
+    int numGradeBooks;
+
+    int numAlunosEscola;
 
     const int MAXSIZENAME = 7;    
 
