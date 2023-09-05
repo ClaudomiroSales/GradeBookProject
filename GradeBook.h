@@ -11,6 +11,8 @@ public:
     GradeBook ( );    
     GradeBook( string );
 
+    void setCourseName( string );
+
     string getCourseName( ) const;
     
     void displayMessage( );
@@ -18,6 +20,8 @@ public:
 private:
 
     string courseName;
+
+    const int MAXSIZENAME = 7;
 
 };
 
