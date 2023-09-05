@@ -57,13 +57,34 @@ string GradeBook::getCourseName( ) const
     return courseName;
 }
 
-void GradeBook::displayMessage( ) 
-{
-    if( courseName.size( ) > 0 )
+void GradeBook::displayMessage( bool check ) const 
+{   
+    if( check )
     {
-        cout << "Welcome to the Grade Book for course " << courseName << '.';
-        cout << " A Turma tem " << numAlunos << " aluno.\n";
-        return;
-    }             
-    cout << "Welcome to the Grade Book. Curso sem nome.";      
+        if( courseName.size( ) > 0 )
+        {
+            cout << "Welcome to the Grade Book for course " << courseName << '.';
+            cout << " A Turma tem " << numAlunos << " aluno.\n";
+            return;
+        }             
+        cout << "Welcome to the Grade Book. Curso sem nome.";  
+    }    
+}
+
+void GradeBook::displayMessage( bool check )
+{
+    //Atribuição dentro da classe
+    this->check = check;
+
+    if( this-check )
+    {
+        if( courseName.size( ) > 0 )
+        {
+            cout << "Welcome to the Grade Book for course " << courseName << '.';
+            cout << " A Turma tem " << numAlunos << " aluno.\n";
+            return;
+        }             
+        cout << "Welcome to the Grade Book. Curso sem nome.";   
+    }
+
 }

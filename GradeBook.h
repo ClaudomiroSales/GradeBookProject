@@ -19,7 +19,8 @@ public:
 
     string getCourseName( ) const;
     
-    void displayMessage( );
+    void displayMessage( bool = true ) const;
+    void displayMessage( bool = true );
     
 private:
 
@@ -27,7 +28,9 @@ private:
 
     int numAlunos;
 
-    const int MAXSIZENAME = 7;
+    bool check;
+
+    const int MAXSIZENAME = 7;    
 
 };
 
