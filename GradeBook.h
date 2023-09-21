@@ -18,8 +18,9 @@ public:
     void setNumAlunos( int );
 
     string getCourseName( ) const;
-    inline int getnumGradeBooks( )   const { return numGradeBooks;   }
-    inline int getnumAlunosEscola( ) const { return numAlunosEscola; }
+
+    inline static int getnumGradeBooks( )   { return numGradeBooks; }
+    inline static int getnumAlunosEscola( ) { return numAlunosEscola; }
     
     void displayMessage( bool = true ) const;
     void displayMessage( bool = true );

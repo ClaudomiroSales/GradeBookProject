@@ -7,6 +7,9 @@ using std::cout;
 
 int main()
 {
+   cout << "Static Methods\n";
+   cout << GradeBook::getnumAlunosEscola( ) << "\n\n";
+
    GradeBook gradebook0;
    GradeBook gradebook1( "Math" );
    const GradeBook GRADEBOOK2( "Physicssfdsfdsfgsgsdfgfgsdfgsdfgsdfdsfgsdfgfsadgf", 30 );
