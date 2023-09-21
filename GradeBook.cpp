@@ -110,7 +110,7 @@ void GradeBook::displayMessage( bool check )
     //Atribuição dentro da classe
     this->check = check;
 
-    if( this-check )
+    if( this->check )
     {
         if( courseName.size( ) > 0 )
         {
