@@ -24,6 +24,13 @@ public:
     
     void displayMessage( bool = true ) const;
     void displayMessage( bool = true );
+
+    //Métodos const não podem ser statics
+    void printListaAlunos(  ) const;
+
+    void fornecerNotas( double [ ], int );
+
+    void printGrades( ) const;
     
 private:
 
@@ -45,7 +52,18 @@ private:
     //Pode inicializar aqui ou no cpp
     //const static int MAXNUMALUNOSESCOLA = 100;
 
-    const int MAXSIZENAME = 7;    
+    const int MAXSIZENAME;    
+
+    //Error check: uma referência a um membro não estático deve ser relativa ao objeto específico C/C++(245)
+    //const int NUMALUNOSMIN = 2;
+    //static string alunos[ NUMALUNOSMIN ];
+
+    //Sem erro
+    static const int NUMALUNOSMIN = 2;
+    static string alunos[ NUMALUNOSMIN ];
+
+    static const int NGRADES = 5;
+    double grades[ NGRADES ];
 
 };
 

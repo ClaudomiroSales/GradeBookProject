@@ -17,10 +17,24 @@ int main()
    GradeBook gradebook4( 20 );
    GradeBook gradebook5( GRADEBOOK2 ); //Constructor de cópia
 
-   cout << "Usando o constructor de copia: GradeBook gradebook5( gradebook2 ); \n";
-   cout << "O gradebook5 eh copia do GRADEBOOK2 (const).\n";
-   GRADEBOOK2.displayMessage( );
-   gradebook5.displayMessage( );  
+   //ERROR: tentando usar método não const
+   //GRADEBOOK5.setNumAlunos( 10 );
+
+   //Variável pertence a classe
+   cout << "\nTestando atributos e metodos statics.\n";
+   cout << "Alunos que conseguiram vaga na escola " << GradeBook::getnumAlunosEscola( ) << '\n';
+   cout << "Numero de GradeBooks instanciados: " << GradeBook::getnumGradeBooks( ) << '\n';
+   cout << "Numero de GradeBooks instanciados: " << gradebook0.getnumGradeBooks( ) << "\n\n";
+
+   gradebook0.printListaAlunos( );
+
+   cout << "\nUsando arrays. Fornecendo e imprimindo notas.\n";
+   const int NGRADES = 5;
+   double grandes[ NGRADES ] = { 10.0, 8.9, 9.3, 7.8, 6.6 };
+
+   gradebook3.fornecerNotas( grandes, NGRADES );
+   gradebook3.printGrades( );
+     
     
    return 0;
 }

@@ -7,15 +7,16 @@ using std::cout;
 int GradeBook::numGradeBooks = 0;
 int GradeBook::numAlunosEscola = 0;
 const int GradeBook::MAXNUMALUNOSESCOLA = 50;
+string GradeBook::alunos[ NUMALUNOSMIN ] = {"Carlos Fernando", "Andreza Raphaela"};
 
 GradeBook::GradeBook( )
-:courseName(""), numAlunos( 0 ), MAXSIZENAME( 9 )
+:courseName(""), numAlunos( 0 ), MAXSIZENAME( 9 ), check( false )
 {
     numGradeBooks++;
 }
 
 GradeBook::GradeBook( string name, int numAlunos )
-:MAXSIZENAME( 9 )
+:MAXSIZENAME( 9 ), check( false )
 {
     setCourseName( name );
     setNumAlunos( numAlunos );
@@ -24,7 +25,7 @@ GradeBook::GradeBook( string name, int numAlunos )
 }
 
 GradeBook::GradeBook( int numAlunos )
-:courseName(""), MAXSIZENAME( 9 )
+:courseName(""), MAXSIZENAME( 9 ), check( false )
 {
     setNumAlunos( numAlunos );
 
@@ -32,7 +33,7 @@ GradeBook::GradeBook( int numAlunos )
 }
 
 GradeBook::GradeBook( const GradeBook& other )
-:MAXSIZENAME( other.MAXSIZENAME )
+:MAXSIZENAME( other.MAXSIZENAME ), check( other.check )
 {
     this->courseName = other.courseName;
     setNumAlunos( other.numAlunos );
@@ -121,4 +122,23 @@ void GradeBook::displayMessage( bool check )
         cout << "Welcome to the Grade Book. Curso sem nome.";   
     }
 
+}
+
+void GradeBook::printListaAlunos( ) const
+{
+    for( int i = 0; i < NUMALUNOSMIN; i++ )
+        cout << alunos[ i ] << '\n';
+}
+
+void GradeBook::fornecerNotas( double grades[ ], int ngrades )
+{
+    if( NGRADES <= ngrades )
+        for( int i = 0; i < NGRADES; i++ )
+            this->grades[ i ] = grades[ i ]; 
+}
+
+void GradeBook::printGrades( ) const
+{
+    for( int i = 0; i < NGRADES; i++ )
+        cout << this->grades[ i ] << '\n';
 }
